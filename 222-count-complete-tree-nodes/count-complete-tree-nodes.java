@@ -14,10 +14,9 @@
  * }
  */
 class Solution {
-    static int n = 0;
     public int countNodes(TreeNode root) {
         if(root == null){
-            return n;
+            return 0;
         }
         int l = countNodes(root.left) + countNodes(root.right);
         return l + 1;
