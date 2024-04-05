@@ -4,15 +4,7 @@
  */
 var compose = function(functions = []) {
     
-    return function(x) {
-        if(!functions.length){
-            return x;
-        }
-        for(let i = functions.length - 1; i >= 0; i--){
-            x = functions[i](x)
-        }
-        return x
-    }
+    return x => functions.reduceRight((res,f)=>f(res),x)
 };
 
 /**
