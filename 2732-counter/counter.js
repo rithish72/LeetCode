@@ -5,10 +5,7 @@
 var createCounter = function(n) {
     
     return function() {
-        curr = n;
-        curr += 1;
-        n = curr;
-        return curr -= 1;
+        return n++;
     };
 };
 
