@@ -1,19 +1,40 @@
 class Solution {
     public int kItemsWithMaximumSum(int numOnes, int numZeros, int numNegOnes, int k) {
+        if(k == 0){
+            return 0;
+        }
+
         int sum = 0;
-        while(k > 0 && numOnes != 0){
-            sum++;
-            numOnes--;
-            k--;
+
+        if(k!=0){
+            if(k <= numOnes){
+                sum += k;
+                k = 0;
+            }
+            else{
+                k -= numOnes;
+                sum += numOnes;
+                numOnes = 0;
+            }
         }
-        while(k > 0 && numZeros != 0){
-            k--;
-            numZeros--;
-        }
-        while(k > 0 && numNegOnes != 0){
-            k--;
-            numZeros--;
-            sum--;
+        if(k!=0){
+            if(k <= numZeros){
+                k = 0;
+            }
+            else{
+                k -= numZeros;
+                numZeros = 0;
+            }
+        }if(k!=0){
+            if(k <= numNegOnes){
+                sum -= k;
+                k = 0;
+            }
+            else{
+                k -= numNegOnes;
+                sum -= numNegOnes;
+                numNegOnes = 0;
+            }
         }
         return sum;
     }
